@@ -127,7 +127,9 @@
 
             $scope.selectedMenuItems.forEach(function (menuItem) {
 
-                displayTotal += menuItem.price;
+                if (!menuItem.voided) {
+                    displayTotal += menuItem.price;
+                }
             });
 
             displayTotal += $scope.check.tax;
