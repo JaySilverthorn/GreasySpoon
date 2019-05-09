@@ -7,9 +7,9 @@
     angular.module('app')
         .controller('editCheckController', editCheckController);
 
-    editCheckController.$inject = ['$q', '$scope', 'checkService', '$routeParams'];
+    editCheckController.$inject = ['$q', '$scope', 'checkService', '$routeParams', '$uibModal'];
 
-    function editCheckController($q, $scope, checkService, $routeParams) {
+    function editCheckController($q, $scope, checkService, $routeParams, $uibModal) {
 
         var tableNumber = $routeParams.tableNumber;
         var checkId = $routeParams.checkId;
@@ -21,6 +21,7 @@
         $scope.selectMenuItem = selectMenuItem;
         $scope.saveCheck = saveCheck;
         $scope.closeCheck = closeCheck;
+        $scope.openVoidPopup = openVoidPopup;
 
         $scope.headingTitle = "Check for Table " + tableNumber;
         $scope.closed = "";
@@ -80,7 +81,9 @@
 
                     if (menuItem.id === orderedItem.itemId ) {
 
-                        $scope.selectedMenuItems.push(menuItem);
+                        orderedItem.name = menuItem.name;
+                        orderedItem.price = menuItem.price;
+                        $scope.selectedMenuItems.push(orderedItem);
                     }
 
                 });
@@ -203,6 +206,38 @@
                         $scope.closed = (check.closed? "CLOSED": "OPEN");
 
                     });
+            }
+        }
+
+        function voidItem(itemId) {
+
+            checkService.voidItemOnCheck(itemId, $scope.check.id)
+                .then(function(data) {
+                    var voidItem = data;
+                });
+        }
+
+        function openVoidPopup(currentSelectedMenuItem) {
+
+            var menuItem = JSON.parse(currentSelectedMenuItem[0]);
+            var itemId = menuItem.id;
+            var voided = menuItem.voided;
+
+            if (!voided) {
+                if ($scope.check !== undefined) {
+                    $uibModal.open( {
+                        size: 'md',
+                        templateUrl: '/templates/modalPopup.html',
+                        controller: 'modalPopupController',
+                        controllerAs: 'vm'
+                    }).result.then(function (result) {
+                        var res = result;
+
+                        if (result === "OK") {
+                            voidItem(itemId);
+                        }
+                    })
+                }
             }
         }
     }

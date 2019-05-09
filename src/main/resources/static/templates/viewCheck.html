@@ -2,19 +2,22 @@
     <h3>{{headingTitle}} {{closed}}</h3>
     <h4 style="margin-top:30px">{{headingSubtitle1}}</h4>
 
-    <div class="col-md-10" style="width:350px;height:200px;padding-left:0px;overflow-y: auto;">
-        <table style="width:300px;height:200px;">
+    <div class="col-md-10" style="width:400px;height:200px;padding-left:0px;overflow-y: auto;">
+        <table style="width:400px;height:200px;">
             <tbody class="col-md-12" style="padding-top:2px;padding-bottom:2px">
                 <tr ng-repeat="selectedMenuItem in selectedMenuItems track by $index">
-                    <td class="col-md-6" style="padding-top:2px;padding-bottom:2px">
+                    <td class="col-md-8" style="padding-top:2px;padding-bottom:2px">
                         {{selectedMenuItem.name}}
                     </td>
                     <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
                         {{selectedMenuItem.price}}
                     </td>
+                    <td class="col-md-2" style="padding-top:2px;padding-bottom:2px">
+                        {{selectedMenuItem.voided? "VOIDED": "";}}
+                    </td>
                 </tr>
                 <tr>
-                    <td class="col-md-6" style="padding-top:10px;padding-bottom:2px">
+                    <td class="col-md-1" style="padding-top:10px;padding-bottom:2px">
                         Tax:
                     </td>
                     <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">

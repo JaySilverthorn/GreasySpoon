@@ -72,7 +72,9 @@
 
                     if (menuItem.id === orderedItem.itemId ) {
 
-                        $scope.selectedMenuItems.push(menuItem);
+                        orderedItem.name = menuItem.name;
+                        orderedItem.price = menuItem.price;
+                        $scope.selectedMenuItems.push(orderedItem);
                     }
 
                 });

@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute','ngResource']);
+var app = angular.module('app', ['ui.bootstrap','ngRoute','ngResource']);
 app.config(function($routeProvider){
     $routeProvider
         .when('/selectTable',{
