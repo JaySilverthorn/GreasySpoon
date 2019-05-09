@@ -42,6 +42,8 @@
             $scope.selectedMenuItems.push(JSON.parse($scope.currentMenuItem));
             $scope.newlyAddedMenuItems.push(JSON.parse($scope.currentMenuItem));
 
+            $scope.currentMenuItem = "Select menu item";
+            $("#notItem option[value='Select menu item']").attr("selected", true);
             $("#notItem option[value='Select menu item']").prop('selected', true);
         }
 

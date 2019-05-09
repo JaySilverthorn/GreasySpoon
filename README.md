@@ -17,6 +17,10 @@ The application was built and tested on a Mac.  It may or maynot work on other p
 
 OS name: "mac os x", version: "10.14.4"
 
+The application was run and tested using Google Chrome:
+
+Version 73.0.3683.103 (Official Build) (64-bit)
+
 # Installation
 
 $ git clone https://github.com/JaySilverthorn/GreasySpoon.git
@@ -30,3 +34,15 @@ $ mvn clean package spring-boot:repackage
 # Run
 
 $ java -jar target/greasy-spoon-1.0
+
+Open a browser tab and run the URL:
+
+http://localhost:8080/index.html
+
+# Appendix 
+
+The specification is located at:
+
+https://github.com/AveroLLC/check-api
+
+

@@ -17,6 +17,10 @@ app.config(function($routeProvider){
             templateUrl: '/templates/showChecks.html',
             controller: 'listChecksController'
         })
+        .when('/index',{
+            templateUrl: '/index.html',
+            controller: 'listChecksController'
+        })
         .otherwise(
             { redirectTo: '/'}
         );
