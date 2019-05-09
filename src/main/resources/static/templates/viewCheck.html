@@ -1,0 +1,50 @@
+<div class="section">
+    <h3>{{headingTitle}} {{closed}}</h3>
+    <h4 style="margin-top:30px">{{headingSubtitle1}}</h4>
+
+    <div class="col-md-10" style="width:300px;height:200px;padding-left:0px">
+        <table style="width:300px;height:200px;">
+            <tbody class="col-md-12" style="padding-top:2px;padding-bottom:2px">
+                <tr ng-repeat="selectedMenuItem in selectedMenuItems track by $index">
+                    <td class="col-md-6" style="padding-top:2px;padding-bottom:2px">
+                        {{selectedMenuItem.name}}
+                    </td>
+                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
+                        {{selectedMenuItem.price}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" style="padding-top:10px;padding-bottom:2px">
+                        Tax:
+                    </td>
+                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
+                        {{check.displayTax}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px">
+                        Tip:
+                    </td>
+                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
+                        {{check.displayTip}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px">
+                        Total:
+                    </td>
+                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
+                        {{check.displayTotal}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12" style="float:left;padding-left:0px;margin-top:30px;">
+        <span class="col-md-3">
+            <button ng-disabled="check.closed" style="width:100px" ng-click="editCheck()">Edit Check</button>
+        </span>
+    </div>
+
+</div>

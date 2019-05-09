@@ -1,0 +1,32 @@
+<div class="section">
+    <h3>{{headingTitle}} {{closed}}</h3>
+    <h4 style="margin-top:30px">{{headingSubtitle1}}</h4>
+    <div>
+        <select id="notItem" class="placeholder-multiple"
+                ng-model="currentMenuItem"
+                ng-change="selectMenuItem()">
+            <option value="Select menu item" disabled selected>Select menu item</option>
+            <option ng-repeat="menuItem in menuItems" value="{{menuItem}}">
+                {{menuItem.name}}
+            </option>
+        </select>
+    </div>
+    <h4 style="margin-top:30px">{{headingSubtitle2}}</h4>
+    <div class="col-md-10" style="width:300px;height:200px;padding-left:0px">
+        <select multiple ng-model="currentSelectedMenuItem" style="width:300px;height:200px;">
+            <option ng-repeat="selectedMenuItem in selectedMenuItems track by $index" value="{{selectedMenuItem}}">
+                {{selectedMenuItem.name}} {{selectedMenuItem.price}}
+            </option>
+        </select>
+    </div>
+
+    <div class="col-md-12" style="float:left;padding-left:0px;margin-top:30px;">
+        <span class="col-md-3">
+            <button ng-click="saveCheck()">Save Check</button>
+        </span>
+        <span class="col-md-3">
+            <button ng-click="closeCheck()">Close Check</button>
+        </span>
+    </div>
+
+</div>
