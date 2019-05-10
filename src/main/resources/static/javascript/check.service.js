@@ -9,6 +9,10 @@
 
     CheckService.$inject = ['$q', '$http'];
 
+    /**
+     * Collection of REST APIs.
+     *
+     */
     function CheckService($q, $http) {
 
         var service = {
@@ -154,10 +158,6 @@
                 return httpObj.data;
             });
         }
-
-
-
     }
-
 
 })();
