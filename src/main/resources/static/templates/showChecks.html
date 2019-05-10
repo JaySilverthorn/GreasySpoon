@@ -1,8 +1,8 @@
 <div class="section">
     <h3>{{headingTitle}}</h3>
-    <h4 style="margin-top:30px">{{headingSubtitle}}</h4>
-    <div class="col-md-10" style="width:300px;height:200px;padding-left:0px">
-        <select multiple ng-model="currentCheck" style="width:300px;height:200px;" ng-change="selectCheck()">
+    <h4 class="show-check-subheading" >{{headingSubtitle}}</h4>
+    <div id="show-check" class="col-md-10" >
+        <select id="show-check-select" multiple ng-model="currentCheck" ng-change="selectCheck()">
             <option ng-repeat="check in checks track by $index" value="{{check}}">
                 table {{check.tableNumber}} {{check.closed? "CLOSED": "OPEN"}}  {{check.displayDate}}
             </option>

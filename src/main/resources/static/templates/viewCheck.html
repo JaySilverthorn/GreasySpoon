@@ -1,42 +1,42 @@
 <div class="section">
     <h3>{{headingTitle}} {{closed}}</h3>
-    <h4 style="margin-top:30px">{{headingSubtitle1}}</h4>
+    <h4 class="view-check-subheading">{{headingSubtitle1}}</h4>
 
-    <div class="col-md-10" style="width:400px;height:200px;padding-left:0px;overflow-y: auto;">
-        <table style="width:400px;height:200px;">
-            <tbody class="col-md-12" style="padding-top:2px;padding-bottom:2px">
+    <div id="view-check" class="col-md-10">
+        <table id="view-check-table" >
+            <tbody id="view-check-tbody" class="col-md-12">
                 <tr ng-repeat="selectedMenuItem in selectedMenuItems track by $index">
-                    <td class="col-md-8" style="padding-top:2px;padding-bottom:2px">
+                    <td class="view-check-td-common col-md-8">
                         {{selectedMenuItem.name}}
                     </td>
-                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
+                    <td class="view-check-td-common-right col-md-1">
                         {{selectedMenuItem.displayPrice}}
                     </td>
-                    <td class="col-md-2" style="padding-top:2px;padding-bottom:2px">
+                    <td class="view-check-td-common col-md-2">
                         {{selectedMenuItem.voided? "VOIDED": "";}}
                     </td>
                 </tr>
                 <tr>
-                    <td class="col-md-1" style="padding-top:10px;padding-bottom:2px">
+                    <td class="view-check-td-common col-md-1">
                         Tax:
                     </td>
-                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
+                    <td class="view-check-td-common-right col-md-1">
                         {{check.displayTax}}
                     </td>
                 </tr>
                 <tr>
-                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px">
+                    <td class="view-check-td-common col-md-1">
                         Tip:
                     </td>
-                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
+                    <td class="view-check-td-common-right col-md-1">
                         {{check.displayTip}}
                     </td>
                 </tr>
                 <tr>
-                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px">
+                    <td class="view-check-td-common col-md-1">
                         Total:
                     </td>
-                    <td class="col-md-1" style="padding-top:2px;padding-bottom:2px;text-align:right">
+                    <td class="view-check-td-common-right col-md-1">
                         {{check.displayTotal}}
                     </td>
                 </tr>
@@ -44,9 +44,9 @@
         </table>
     </div>
 
-    <div class="col-md-12" style="float:left;padding-left:0px;margin-top:30px;">
+    <div id="view-check-button-div" class="col-md-12">
         <span class="col-md-3">
-            <button ng-disabled="check.closed" style="width:100px" ng-click="editCheck()">Edit Check</button>
+            <button id="view-check-button" ng-disabled="check.closed" ng-click="editCheck()">Edit Check</button>
         </span>
     </div>
 

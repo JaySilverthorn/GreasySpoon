@@ -29,4 +29,53 @@
 .select-table {
     margin-top:30px;
 }
+.show-check-subheading {
+    margin-top:30px;
+}
+#show-check {
+    width:300px;
+    height:200px;
+    padding-left:0px;
+}
+#show-check-select {
+    width:300px;
+    height:200px;
+}
+#view-check {
+    width:400px;
+    height:200px;
+    padding-left:0px;
+    overflow-y: auto;
+}
+#view-check-table {
+    width:400px;
+    height:200px;
+}
+#view-check-tbody {
+    padding-left:0px;
+    padding-top:2px;
+    padding-bottom:2px;
+}
+.view-check-td-common {
+    padding-top:2px;
+    padding-bottom:2px;
+}
+.view-check-td-common-right {
+    padding-top:2px;
+    padding-bottom:2px;
+    text-align:right;
+}
+#view-check-button-div {
+    float:left;
+    padding-left:0px;
+    margin-top:30px;
+}
+#view-check-button {
+    width:100px;
+}
+.view-check-subheading {
+    margin-top:30px;
+}
+
+
 
