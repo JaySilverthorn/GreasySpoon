@@ -9,6 +9,10 @@
 
     modalPopupController.$inject = ['$scope', '$uibModalInstance'];
 
+    /**
+     * Create a modal popup dialog.
+     *
+     */
     function modalPopupController($scope, $uibModalInstance) {
 
         $scope.ok = ok;

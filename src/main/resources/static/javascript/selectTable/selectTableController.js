@@ -9,6 +9,12 @@
 
         selectTableController.$inject = ['$scope', 'checkService', '$location'];
 
+    /**
+     * Allow the user to select a table for opening a check.
+     *
+     * @param {object} checkService - the REST API interface
+     *
+     */
     function selectTableController($scope, checkService, $location) {
 
         $scope.selectTable = selectTable;
@@ -26,6 +32,10 @@
                 $("#notTable option[value='Select a table']").prop('selected', true);
             });
 
+        /**
+         * Redirect to the editCheck page once a table is selected.
+         **
+         */
         function selectTable() {
 
             $location.path( "/editCheck/" +  $scope.currentTableNumber);
