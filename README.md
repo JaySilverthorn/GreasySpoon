@@ -37,7 +37,7 @@ $ java -jar target/greasy-spoon-1.0
 
 Open a browser tab and run the URL:
 
-http://localhost:8080/index.html
+http://localhost:8080/
 
 # Appendix 
 
