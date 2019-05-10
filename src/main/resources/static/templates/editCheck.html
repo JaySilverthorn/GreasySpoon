@@ -1,6 +1,6 @@
 <div class="section">
     <h3>{{headingTitle}} {{closed}}</h3>
-    <h4 style="margin-top:30px">{{headingSubtitle1}}</h4>
+    <h4 class="edit-check-subheading">{{headingSubtitle1}}</h4>
     <div>
         <select id="notItem" class="placeholder-multiple"
                 ng-model="currentMenuItem"
@@ -11,9 +11,9 @@
             </option>
         </select>
     </div>
-    <h4 style="margin-top:30px">{{headingSubtitle2}}</h4>
-    <div class="col-md-10" style="width:300px;height:200px;padding-left:0px">
-        <select multiple ng-model="currentSelectedMenuItem" style="width:300px;height:200px;"
+    <h4 class="edit-check-subheading">{{headingSubtitle2}}</h4>
+    <div id="edit-check" class=" col-md-10">
+        <select id="edit-select" multiple ng-model="currentSelectedMenuItem"
                 ng-model="currentSelectedMenuItem"
                 ng-click="openVoidPopup(currentSelectedMenuItem)">
             <option ng-repeat="selectedMenuItem in selectedMenuItems track by $index" value="{{selectedMenuItem}}">
@@ -22,7 +22,7 @@
         </select>
     </div>
 
-    <div class="col-md-12" style="float:left;padding-left:0px;margin-top:30px;">
+    <div class="edit-check-buttons col-md-12">
         <span class="col-md-3">
             <button ng-click="saveCheck()">Save Check</button>
         </span>

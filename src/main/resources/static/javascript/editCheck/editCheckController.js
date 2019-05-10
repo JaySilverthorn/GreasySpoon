@@ -254,6 +254,7 @@
 
             return deferred.promise;
         }
+
         /**
          * Close the check when the server hits the button in the UI.
          *

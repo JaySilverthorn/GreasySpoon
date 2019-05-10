@@ -1,6 +1,6 @@
 <div class="section">
     <h3>{{headingTitle}}</h3>
-    <div>
+    <div class="select-table">
         <select id="notTable" ng-model="currentTableNumber" ng-change="selectTable()">
             <option value="Select a table" disabled selected>Select a table</option>
             <option ng-repeat="table in tables" value="{{table.number}}">
