@@ -310,7 +310,7 @@
             if (!voided) {
                 if ($scope.check !== undefined) {
                     $uibModal.open( {
-                        size: 'md',
+                        size: 'sm',
                         templateUrl: '/templates/modalPopup.html',
                         controller: 'modalPopupController',
                         controllerAs: 'vm'
