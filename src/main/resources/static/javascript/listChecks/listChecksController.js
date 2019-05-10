@@ -9,6 +9,12 @@
 
     listChecksController.$inject = ['$q', '$scope', 'checkService', '$location'];
 
+    /**
+     * Allow a server to view all the checks.
+     *
+     * @param {object} checkService - the REST API interface
+     *
+     */
     function listChecksController($q, $scope, checkService, $location) {
 
         $scope.selectCheck = selectCheck;
@@ -16,6 +22,10 @@
 
         setChecksForDisplay();
 
+        /**
+         * If a check is selected from the list, go to edit screen.
+         *
+         */
         function selectCheck() {
 
             var currentCheck = JSON.parse($scope.currentCheck);
@@ -23,6 +33,10 @@
             $location.path( "/editCheck/" +  currentCheck.tableNumber + "/" + currentCheck.id);
         }
 
+        /**
+         * retrieve all the checks and add a formatted table number and date.
+         *
+         */
         function setChecksForDisplay() {
 
             checkService.getChecks()
@@ -49,6 +63,12 @@
                 });
         }
 
+        /**
+         * retrieve all the tables.
+         *
+         * @return (object) the list of tables.
+         *
+         */
         function getTables() {
 
             var deferred = $q.defer();
@@ -61,6 +81,16 @@
             return deferred.promise;
         }
 
+        /**
+         * retrieve the table number for a tableId.
+         *
+         * @param {object} the list of tables.
+         *
+         * @param {string} the table id.
+         *
+         * @return (string) the table number.
+         *
+         */
         function getTableNumber(tables, tableId) {
 
             var tableNumber;
@@ -75,6 +105,13 @@
             return tableNumber;
         }
 
+        /**
+         * Format the date to be easy to read.
+         *
+         * @param {object} check - the check with the date to modify,
+         *
+         * @return (string) the formatted date.
+         */
         function getDisplayDate(check) {
 
             var dateUpdated = new Date(check.dateUpdated);

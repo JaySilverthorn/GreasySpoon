@@ -9,6 +9,12 @@
 
     editCheckController.$inject = ['$q', '$scope', 'checkService', '$routeParams', '$uibModal', '$location'];
 
+    /**
+     * Allow a server to add items to a single check.
+     *
+     * @param {object} checkService - the REST API interface
+     *
+     */
     function editCheckController($q, $scope, checkService, $routeParams, $uibModal, $location) {
 
         var tableNumber = $routeParams.tableNumber;
@@ -39,6 +45,10 @@
 
         setCheckforTable(tableNumber);
 
+        /**
+         * Add a menu item when selected in the UI.
+         *
+         */
         function selectMenuItem() {
 
             $scope.selectedMenuItems.push(JSON.parse($scope.currentMenuItem));
@@ -49,6 +59,11 @@
             $("#notItem option[value='Select menu item']").prop('selected', true);
         }
 
+        /**
+         * Traverse the list of tables to find the open one and get the corresponding check.
+         *
+         * @param {number} the table number
+         */
         function setCheckforTable(tableNumber) {
 
             if ($scope.check === undefined) {
@@ -73,6 +88,11 @@
             }
         }
 
+        /**
+         * Set the display with the menu item details.
+         *
+         * @param {object} orderedItems - the list of menu items in the order.
+         */
         function setMenuItemsForDisplay(orderedItems) {
 
             $scope.selectedMenuItems = [];
@@ -92,6 +112,10 @@
             });
         }
 
+        /**
+         * Save the list of any new menu items to the check. Create a check if needed.
+         *
+         */
         function saveCheck() {
 
             if ($scope.check === undefined || $scope.check.closed) {
@@ -122,6 +146,10 @@
             }
         }
 
+        /**
+         * Add the new menu items to the check permanently.
+         *
+         */
         function addMenuItemsToCheck() {
 
             checkService.addItemsToCheck($scope.newlyAddedMenuItems, $scope.check.id)
@@ -130,6 +158,12 @@
                 });
         }
 
+        /**
+         * Open the check for a given tableId.
+         *
+         * @param {string} tableId - id for a table.
+         *
+         */
         function getOpenCheckForTable(tableId) {
             var deferred = $q.defer();
 
@@ -159,6 +193,10 @@
             return deferred.promise;
         }
 
+        /**
+         * Retrieve the table list.
+         *
+         */
         function getTables() {
 
             var deferred = $q.defer();
@@ -171,6 +209,16 @@
             return deferred.promise;
         }
 
+        /**
+         * Retrieve the table ID for a given table number.
+         *
+         * @param {object} tables - the list of tables.
+         *
+         * @param {number} tableNumber - the table number.
+         *
+         * @return {string} the table ID
+         *
+         */
         function getTableId(tables, tableNumber) {
 
             var tableId;
@@ -185,6 +233,14 @@
             return tableId;
         }
 
+        /**
+         * Create a new check.
+         *
+         * @param {string} tableId - the table ID.
+         *
+         * @return {object} the check
+         *
+         */
         function createCheck(tableId) {
 
             var deferred = $q.defer();
@@ -198,7 +254,10 @@
 
             return deferred.promise;
         }
-
+        /**
+         * Close the check when the server hits the button in the UI.
+         *
+         */
         function closeCheck() {
 
             if ($scope.check !== undefined) {
@@ -211,6 +270,12 @@
             }
         }
 
+        /**
+         * Void a menu item from a check.
+         *
+         * @param {string} itemId - the item ID to void.
+         *
+         */
         function voidItem(itemId) {
 
             if ($scope.check !== undefined && $scope.tableNumber != undefined) {
@@ -230,6 +295,12 @@
 
         }
 
+        /**
+         * Open a popup to confirm the server really wants to void the item selected.
+         *
+         * @param {object} currentSelectedMenuItem - the item to void.
+         *
+         */
         function openVoidPopup(currentSelectedMenuItem) {
 
             var menuItem = JSON.parse(currentSelectedMenuItem[0]);
