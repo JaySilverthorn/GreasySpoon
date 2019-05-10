@@ -9,6 +9,9 @@
     margin-left: 0px;
     float:left;
 }
+#index-heading {
+    padding-left:50px;
+}
 #edit-check {
     width:300px;
     height:200px;
