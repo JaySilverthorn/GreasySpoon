@@ -74,6 +74,7 @@
 
                         orderedItem.name = menuItem.name;
                         orderedItem.price = menuItem.price;
+                        orderedItem.displayPrice = getFormattedPrice(menuItem.price.toString());
                         $scope.selectedMenuItems.push(orderedItem);
                     }
 
@@ -114,7 +115,11 @@
 
             displayValue = value.split(".");
 
-            cents = displayValue[1].substring(0,2);
+            if (displayValue.length == 2) {
+                cents = displayValue[1].substring(0,2);
+            } else {
+                cents = "00";
+            }
 
             displayValue = displayValue[0] + "." + cents;
 
