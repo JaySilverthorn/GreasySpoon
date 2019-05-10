@@ -7,9 +7,9 @@
     angular.module('app')
         .controller('editCheckController', editCheckController);
 
-    editCheckController.$inject = ['$q', '$scope', 'checkService', '$routeParams', '$uibModal'];
+    editCheckController.$inject = ['$q', '$scope', 'checkService', '$routeParams', '$uibModal', '$location'];
 
-    function editCheckController($q, $scope, checkService, $routeParams, $uibModal) {
+    function editCheckController($q, $scope, checkService, $routeParams, $uibModal, $location) {
 
         var tableNumber = $routeParams.tableNumber;
         var checkId = $routeParams.checkId;
@@ -17,6 +17,7 @@
         $scope.selectedMenuItems = [];
         $scope.newlyAddedMenuItems = [];
         $scope.check = undefined;
+        $scope.tableNumber = tableNumber;
 
         $scope.selectMenuItem = selectMenuItem;
         $scope.saveCheck = saveCheck;
@@ -54,6 +55,7 @@
                 getTables()
                     .then(function (data) {
                         var tables = data;
+                        $scope.tables = tables;
                         var tableId = getTableId(tables, tableNumber);
                         getOpenCheckForTable(tableId)
                             .then(function (check) {
@@ -211,10 +213,21 @@
 
         function voidItem(itemId) {
 
-            checkService.voidItemOnCheck(itemId, $scope.check.id)
-                .then(function(data) {
-                    var voidItem = data;
-                });
+            if ($scope.check !== undefined && $scope.tableNumber != undefined) {
+                checkService.voidItemOnCheck(itemId, $scope.check.id)
+                    .then(function(data) {
+                        var voidItem = data;
+                        if ($scope.check.orderedItems !== undefined) {
+                            var tableId = getTableId($scope.tables, $scope.tableNumber);
+                            getOpenCheckForTable(tableId)
+                                .then(function (check) {
+                                    $scope.check = check;
+                                    setMenuItemsForDisplay($scope.check.orderedItems);
+                                })
+                        }
+                    });
+            }
+
         }
 
         function openVoidPopup(currentSelectedMenuItem) {

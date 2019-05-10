@@ -45,4 +45,8 @@ The specification is located at:
 
 https://github.com/AveroLLC/check-api
 
+# Things not done
+
+The view of all checks should have a search and ordering by type or date.
+
 
