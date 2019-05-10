@@ -248,7 +248,7 @@
             checkService.createCheck(tableId)
                 .then(function(data) {
                     $scope.check = data;
-                    $scope.closed = (check.closed? "CLOSED": "OPEN");
+                    $scope.closed = ($scope.check.closed? "CLOSED": "OPEN");
                     deferred.resolve(data);
                 });
 
@@ -264,8 +264,7 @@
                 checkService.closeCheck($scope.check.id)
                     .then(function(data) {
                         $scope.check = data;
-                        $scope.closed = (check.closed? "CLOSED": "OPEN");
-
+                        $scope.closed = ($scope.check.closed? "CLOSED": "OPEN");
                     });
             }
         }
